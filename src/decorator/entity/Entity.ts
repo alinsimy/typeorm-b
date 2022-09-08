@@ -41,6 +41,7 @@ export function Entity(
             schema: options.schema ? options.schema : undefined,
             synchronize: options.synchronize,
             withoutRowid: options.withoutRowid,
+            skipPKValidation: options.skipPKValidation ? true : false,
         } as TableMetadataArgs)
     }
 }
