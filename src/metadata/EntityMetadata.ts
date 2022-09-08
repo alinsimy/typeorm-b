@@ -507,7 +507,7 @@ export class EntityMetadata {
      */
     afterRecoverListeners: EntityListenerMetadata[] = []
 
-	skipPKValidation: boolean
+    skipPKValidation: boolean
 
     /**
      * Map of columns and relations of the entity.
@@ -1027,6 +1027,9 @@ export class EntityMetadata {
             this.tableMetadataArgs.type === "junction"
         this.isClosureJunction =
             this.tableMetadataArgs.type === "closure-junction"
+        this.skipPKValidation = this.tableMetadataArgs.skipPKValidation
+            ? true
+            : false
     }
 
     /**
