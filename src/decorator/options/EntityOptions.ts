@@ -47,5 +47,5 @@ export interface EntityOptions {
      */
     withoutRowid?: boolean
 
-    skipPKValidation: boolean
+    skipPKValidation?: boolean
 }
