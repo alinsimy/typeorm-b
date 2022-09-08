@@ -507,6 +507,8 @@ export class EntityMetadata {
      */
     afterRecoverListeners: EntityListenerMetadata[] = []
 
+	skipPKValidation: boolean
+
     /**
      * Map of columns and relations of the entity.
      *

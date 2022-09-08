@@ -55,7 +55,7 @@ export class EntityMetadataValidator {
         driver: Driver,
     ) {
         // check if table metadata has an id
-        if (!entityMetadata.primaryColumns.length && !entityMetadata.isJunction)
+        if (!entityMetadata.skipPKValidation && !entityMetadata.primaryColumns.length && !entityMetadata.isJunction)
             throw new MissingPrimaryColumnError(entityMetadata)
 
         // if entity has multiple primary keys and uses custom constraint name,
