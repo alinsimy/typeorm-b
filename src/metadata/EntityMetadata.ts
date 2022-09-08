@@ -507,6 +507,9 @@ export class EntityMetadata {
      */
     afterRecoverListeners: EntityListenerMetadata[] = []
 
+    /**
+     * Specify if the entity can exists without having a primary key column.
+     */
     skipPKValidation: boolean
 
     /**

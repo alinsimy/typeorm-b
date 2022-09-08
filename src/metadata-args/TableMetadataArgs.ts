@@ -71,5 +71,10 @@ export interface TableMetadataArgs {
      */
     withoutRowid?: boolean
 
+    /**
+     * If set to 'true' an entity can exist without having a primary column.
+     * By default, the value of skipPKValidation will be 'false' and it will always check
+     * if an entity has a primary column.
+     */
     skipPKValidation?: boolean
 }
