@@ -44,7 +44,7 @@ export class EntityCreateCommand implements yargs.CommandModule {
      * Gets contents of the entity file.
      */
     protected static getTemplate(name: string): string {
-        return `import { Entity } from "typeorm"
+        return `import { Entity } from "typeorm-b"
 
 @Entity()
 export class ${name} {
