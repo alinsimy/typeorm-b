@@ -10,7 +10,7 @@ export class testMigration1610975184784 implements MigrationInterface {
     }
 
 }`,
-    javascript: `const { MigrationInterface, QueryRunner } = require("typeorm");
+    javascript: `const { MigrationInterface, QueryRunner } = require("typeorm-b");
 
 module.exports = class testMigration1610975184784 {
 
@@ -20,7 +20,7 @@ module.exports = class testMigration1610975184784 {
     async down(queryRunner) {
     }
 }`,
-    timestamp: `import {MigrationInterface, QueryRunner} from "typeorm";
+    timestamp: `import {MigrationInterface, QueryRunner} from "typeorm-b";
 
 export class testMigration1641163894670 implements MigrationInterface {
 

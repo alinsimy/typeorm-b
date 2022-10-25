@@ -218,7 +218,7 @@ export class PostRefactoringTIMESTAMP implements MigrationInterface {
 Alternatively you can also output your migrations as Javascript files using the `o` (alias for `--outputJs`) flag. This is useful for Javascript only projects in which TypeScript additional packages are not installed. This command, will generate a new migration file `{TIMESTAMP}-PostRefactoring.js` with the following content:
 
 ```javascript
-const { MigrationInterface, QueryRunner } = require("typeorm")
+const { MigrationInterface, QueryRunner } = require("typeorm-b")
 
 module.exports = class PostRefactoringTIMESTAMP {
     async up(queryRunner) {

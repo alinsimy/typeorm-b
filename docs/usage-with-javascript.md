@@ -6,7 +6,7 @@ Everything is the same, except you need to omit types and if your platform does 
 ##### app.js
 
 ```typescript
-var typeorm = require("typeorm")
+var typeorm = require("typeorm-b")
 
 var dataSource = new typeorm.DataSource({
     type: "postgres",
@@ -56,7 +56,7 @@ dataSource
 ##### entity/Category.js
 
 ```typescript
-var EntitySchema = require("typeorm").EntitySchema
+var EntitySchema = require("typeorm-b").EntitySchema
 
 module.exports = new EntitySchema({
     name: "Category", // Will use table name `category` as default behaviour.
@@ -77,7 +77,7 @@ module.exports = new EntitySchema({
 ##### entity/Post.js
 
 ```typescript
-var EntitySchema = require("typeorm").EntitySchema
+var EntitySchema = require("typeorm-b").EntitySchema
 
 module.exports = new EntitySchema({
     name: "Post", // Will use table name `post` as default behaviour.

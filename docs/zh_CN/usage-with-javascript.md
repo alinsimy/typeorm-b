@@ -6,103 +6,100 @@ TypeORM 不仅可以用于 TypeScript，还可以用于 JavaScript。
 ##### app.js
 
 ```typescript
-var typeorm = require("typeorm");
+var typeorm = require("typeorm-b")
 
 typeorm
-  .createConnection({
-    type: "postgres",
-    host: "localhost",
-    port: 5432,
-    username: "test",
-    password: "admin",
-    database: "test",
-    synchronize: true,
-    entities: [
-        require("./entity/Post"), 
-        require("./entity/Category")
-    ]
-  })
-  .then(function(connection) {
-    var category1 = {
-      name: "TypeScript"
-    };
-    var category2 = {
-      name: "Programming"
-    };
+    .createConnection({
+        type: "postgres",
+        host: "localhost",
+        port: 5432,
+        username: "test",
+        password: "admin",
+        database: "test",
+        synchronize: true,
+        entities: [require("./entity/Post"), require("./entity/Category")],
+    })
+    .then(function (connection) {
+        var category1 = {
+            name: "TypeScript",
+        }
+        var category2 = {
+            name: "Programming",
+        }
 
-    var post = {
-      title: "Control flow based type analysis",
-      text: "TypeScript 2.0 implements a control flow-based type analysis for local variables and parameters.",
-      categories: [category1, category2]
-    };
+        var post = {
+            title: "Control flow based type analysis",
+            text: "TypeScript 2.0 implements a control flow-based type analysis for local variables and parameters.",
+            categories: [category1, category2],
+        }
 
-    var postRepository = connection.getRepository("Post");
-    postRepository
-      .save(post)
-      .then(function(savedPost) {
-        console.log("Post has been saved: ", savedPost);
-        console.log("Now lets load all posts: ");
+        var postRepository = connection.getRepository("Post")
+        postRepository
+            .save(post)
+            .then(function (savedPost) {
+                console.log("Post has been saved: ", savedPost)
+                console.log("Now lets load all posts: ")
 
-        return postRepository.find();
-      })
-      .then(function(allPosts) {
-        console.log("All posts: ", allPosts);
-      });
-  })
-  .catch(function(error) {
-    console.log("Error: ", error);
-  });
+                return postRepository.find()
+            })
+            .then(function (allPosts) {
+                console.log("All posts: ", allPosts)
+            })
+    })
+    .catch(function (error) {
+        console.log("Error: ", error)
+    })
 ```
 
 ##### entity/Category.js
 
 ```typescript
-var EntitySchema = require("typeorm").EntitySchema;
+var EntitySchema = require("typeorm-b").EntitySchema
 
 module.exports = new EntitySchema({
-  name: "Category",
-  columns: {
-    id: {
-      primary: true,
-      type: "int",
-      generated: true
+    name: "Category",
+    columns: {
+        id: {
+            primary: true,
+            type: "int",
+            generated: true,
+        },
+        name: {
+            type: "varchar",
+        },
     },
-    name: {
-      type: "varchar"
-    }
-  }
-});
+})
 ```
 
 ##### entity/Post.js
 
 ```typescript
-var EntitySchema = require("typeorm").EntitySchema;
+var EntitySchema = require("typeorm-b").EntitySchema
 
 module.exports = new EntitySchema({
-  name: "Post",
-  columns: {
-    id: {
-      primary: true,
-      type: "int",
-      generated: true
+    name: "Post",
+    columns: {
+        id: {
+            primary: true,
+            type: "int",
+            generated: true,
+        },
+        title: {
+            type: "varchar",
+        },
+        text: {
+            type: "text",
+        },
     },
-    title: {
-      type: "varchar"
+    relations: {
+        categories: {
+            target: "Category",
+            type: "many-to-many",
+            joinTable: true,
+            cascade: true,
+        },
     },
-    text: {
-      type: "text"
-    }
-  },
-  relations: {
-    categories: {
-      target: "Category",
-      type: "many-to-many",
-      joinTable: true,
-      cascade: true
-    }
-  }
-});
+})
 ```
 
 您可以查看此示例[typeorm/javascript-example](https://github.com/typeorm/javascript-example)以了解更多信息。
